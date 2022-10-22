@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="name"><h1>OUR CALCULATOR</h1></div>
+        <form class="calculator" name="calculatorform">
+            <div class="screen">
+                <div id="display"></div>
+            </div>
+            <table>
+                <tbody>
+                  <tr>
+                    <td colspan="4">
+                      =
+                    </td>
+                  </tr>
+                  <tr>
+                     <td>7</td>
+                     <td>8</td>
+                     <td>9</td>
+                     <td>-</td>
+                  </tr>
+                  <tr>
+                     <td>4</td>
+                     <td>5</td>
+                     <td>6</td>
+                     <td>+</td>
+                  </tr>
+                  <tr>
+                     <td>1</td>
+                     <td>2</td>
+                     <td>3</td>
+                     <td>*</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td class="clearbtn">clr</td>
+                     <td>⬅️</td>
+                     <td>/</td>
+                  </tr>
+                </tbody>
+              </table>
+        </form>
+    </div>
+    <script>
+    function handler(event) {
+        const value = event.target.innerText
+        const display = document.getElementById("display")
+        
+        switch(value) {
+          case "clr":
+            display.innerText = ""
+            break
+      
+          case "⬅️":
+            display.innerText = display.innerText.slice(0, -1)
+            break
+            
+          case "=":
+            display.innerText = eval(display.innerText)
+            break
+          
+          default:
+            display.innerText += value
+        }
+      }
+      Array
+        .from(
+          document.getElementsByTagName("td")
+        )
+        .forEach(
+          (td) => {
+            td.addEventListener("click", handler)
+          }
+        )
+    </script>
+</body>
+</html>
